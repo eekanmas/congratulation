@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Congratulations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.2s ease;
+    }
+    h1, p {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+    .show {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    /* Overlay */
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      cursor: pointer;
+      z-index: 9999;
+    }
+    #overlay.fade {
+      opacity: 0;
+      transition: opacity 1s ease;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Musik background -->
+  <audio id="bg-music" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Overlay -->
+  <div id="overlay">Click anywhere to begin ✨</div>
+
+  <div class="container" id="content">
+    <h1>Barakallah on Your Inauguration</h1>
+    <p>May Allah SWT brings you growth, joy, and endless blessings.</p>
+    <img src="Ucapan selamat atas pelantikan.png" alt="Ucapan 1">
+    <img src="Screenshot_1.png" alt="Ucapan 2">
+    <p>Love, Azis</p>
+  </div>
+
+  <script>
+    const elements = document.querySelectorAll("h1, p, img");
+    const overlay = document.getElementById("overlay");
+    const content = document.getElementById("content");
+    const audio = document.getElementById("bg-music");
+
+    overlay.addEventListener("click", () => {
+      // Play music
+      audio.play();
+
+      // Hilangkan overlay
+      overlay.classList.add("fade");
+      content.style.opacity = 1;
+
+      // Mulai animasi teks dan gambar
+      elements.forEach((el, index) => {
+        setTimeout(() => el.classList.add("show"), index * 600);
+      });
+    });
+  </script>
+</body>
+</html>
